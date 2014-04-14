@@ -8,3 +8,7 @@ a6a126,127.0.0.1,GET,http://local.symfony.com/app_dev.php/demo/hello/Fabien,1397
 ed439e,127.0.0.1,GET,http://local.symfony.com/app_dev.php/demo/secured/hello/World,1397490626,
 4ce233,127.0.0.1,GET,http://local.symfony.com/app_dev.php/demo/secured/login,1397490627,
 a235ee,127.0.0.1,GET,http://local.symfony.com/app_dev.php/demo/,1397490637,
+234d85,127.0.0.1,GET,http://local.symfony.com/demo/hello/Fabien,1397491668,
+62411e,127.0.0.1,GET,http://local.symfony.com/app_dev.php/,1397491740,
+a37a23,127.0.0.1,GET,http://local.symfony.com/app_dev.php/,1397491743,
+68b5e4,127.0.0.1,GET,http://local.symfony.com/app_dev.php/,1397492173,
