@@ -82,5 +82,6 @@
   'IbwJobeetBundle:Job:index.html.twig' => 'C:\\wamp\\www\\GIT\\Symfony2.4\\src\\Ibw\\JobeetBundle/Resources/views/Job/index.html.twig',
   'IbwJobeetBundle:Job:new.html.twig' => 'C:\\wamp\\www\\GIT\\Symfony2.4\\src\\Ibw\\JobeetBundle/Resources/views/Job/new.html.twig',
   'IbwJobeetBundle:Job:show.html.twig' => 'C:\\wamp\\www\\GIT\\Symfony2.4\\src\\Ibw\\JobeetBundle/Resources/views/Job/show.html.twig',
+  'IbwJobeetBundle::layout.html.twig' => 'C:\\wamp\\www\\GIT\\Symfony2.4\\src\\Ibw\\JobeetBundle/Resources/views/layout.html.twig',
   '::base.html.twig' => 'C:/wamp/www/GIT/Symfony2.4/app/Resources\\views/base.html.twig',
 );
