@@ -77,6 +77,7 @@
   'SwiftmailerBundle:Collector:swiftmailer.html.twig' => 'C:\\wamp\\www\\GIT\\Symfony2.4\\vendor\\symfony\\swiftmailer-bundle\\Symfony\\Bundle\\SwiftmailerBundle/Resources/views/Collector/swiftmailer.html.twig',
   'DoctrineBundle:Collector:db.html.twig' => 'C:\\wamp\\www\\GIT\\Symfony2.4\\vendor\\doctrine\\doctrine-bundle\\Doctrine\\Bundle\\DoctrineBundle/Resources/views/Collector/db.html.twig',
   'DoctrineBundle:Collector:explain.html.twig' => 'C:\\wamp\\www\\GIT\\Symfony2.4\\vendor\\doctrine\\doctrine-bundle\\Doctrine\\Bundle\\DoctrineBundle/Resources/views/Collector/explain.html.twig',
+  'IbwJobeetBundle:Default:index.html.twig' => 'C:\\wamp\\www\\GIT\\Symfony2.4\\src\\Ibw\\JobeetBundle/Resources/views/Default/index.html.twig',
   'AcmeDemoBundle:Demo:contact.html.twig' => 'C:\\wamp\\www\\GIT\\Symfony2.4\\src\\Acme\\DemoBundle/Resources/views/Demo/contact.html.twig',
   'AcmeDemoBundle:Demo:hello.html.twig' => 'C:\\wamp\\www\\GIT\\Symfony2.4\\src\\Acme\\DemoBundle/Resources/views/Demo/hello.html.twig',
   'AcmeDemoBundle:Demo:index.html.twig' => 'C:\\wamp\\www\\GIT\\Symfony2.4\\src\\Acme\\DemoBundle/Resources/views/Demo/index.html.twig',

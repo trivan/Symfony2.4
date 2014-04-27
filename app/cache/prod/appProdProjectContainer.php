@@ -1197,6 +1197,7 @@ class appProdProjectContainer extends Container
         $instance->addPath('C:\\wamp\\www\\GIT\\Symfony2.4\\vendor\\symfony\\symfony\\src\\Symfony\\Bundle\\TwigBundle/Resources/views', 'Twig');
         $instance->addPath('C:\\wamp\\www\\GIT\\Symfony2.4\\vendor\\symfony\\swiftmailer-bundle\\Symfony\\Bundle\\SwiftmailerBundle/Resources/views', 'Swiftmailer');
         $instance->addPath('C:\\wamp\\www\\GIT\\Symfony2.4\\vendor\\doctrine\\doctrine-bundle\\Doctrine\\Bundle\\DoctrineBundle/Resources/views', 'Doctrine');
+        $instance->addPath('C:\\wamp\\www\\GIT\\Symfony2.4\\src\\Ibw\\JobeetBundle/Resources/views', 'IbwJobeet');
         $instance->addPath('C:/wamp/www/GIT/Symfony2.4/app/Resources/views');
         $instance->addPath('C:\\wamp\\www\\GIT\\Symfony2.4\\vendor\\symfony\\symfony\\src\\Symfony\\Bridge\\Twig/Resources/views/Form');
         return $instance;
@@ -1331,7 +1332,7 @@ class appProdProjectContainer extends Container
             'kernel.root_dir' => 'C:/wamp/www/GIT/Symfony2.4/app',
             'kernel.environment' => 'prod',
             'kernel.debug' => false,
-            'kernel.name' => 'app',
+            'kernel.name' => 'ap_',
             'kernel.cache_dir' => 'C:/wamp/www/GIT/Symfony2.4/app/cache/prod',
             'kernel.logs_dir' => 'C:/wamp/www/GIT/Symfony2.4/app/logs',
             'kernel.bundles' => array(
@@ -1343,6 +1344,7 @@ class appProdProjectContainer extends Container
                 'AsseticBundle' => 'Symfony\\Bundle\\AsseticBundle\\AsseticBundle',
                 'DoctrineBundle' => 'Doctrine\\Bundle\\DoctrineBundle\\DoctrineBundle',
                 'SensioFrameworkExtraBundle' => 'Sensio\\Bundle\\FrameworkExtraBundle\\SensioFrameworkExtraBundle',
+                'IbwJobeetBundle' => 'Ibw\\JobeetBundle\\IbwJobeetBundle',
             ),
             'kernel.charset' => 'UTF-8',
             'kernel.container_class' => 'appProdProjectContainer',
