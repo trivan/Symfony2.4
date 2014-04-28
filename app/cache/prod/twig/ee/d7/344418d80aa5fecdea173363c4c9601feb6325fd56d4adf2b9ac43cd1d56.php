@@ -47,12 +47,12 @@ class __TwigTemplate_eed7344418d80aa5fecdea173363c4c9601feb6325fd56d4adf2b9ac43c
                 <div class=\"content\">
                     <h1><a href=\"";
         // line 21
-        echo $this->env->getExtension('routing')->getPath("ibw_job");
+        echo $this->env->getExtension('routing')->getPath("ibw_jobeet_homepage");
         echo "\">
-                        <img src=\"";
+                        <img alt=\"Jobeet Job Board\" src=\"";
         // line 22
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/ibwjobeet/images/logo.jpg"), "html", null, true);
-        echo "\" alt=\"Jobeet Job Board\" />
+        echo "\" />
                     </a></h1>
  
                     <div id=\"sub_header\">

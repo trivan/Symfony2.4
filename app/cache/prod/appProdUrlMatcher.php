@@ -38,7 +38,7 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
             }
 
             // ibw_job_show
-            if (preg_match('#^/job/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+            if (preg_match('#^/job/(?P<company>[^/]++)/(?P<location>[^/]++)/(?P<id>\\d+)/(?P<position>[^/]++)$#s', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'ibw_job_show')), array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\JobController::showAction',));
             }
 
@@ -85,6 +85,15 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
             }
             not_ibw_job_delete:
 
+        }
+
+        // ibw_jobeet_homepage
+        if (rtrim($pathinfo, '/') === '') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'ibw_jobeet_homepage');
+            }
+
+            return array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\JobController::indexAction',  '_route' => 'ibw_jobeet_homepage',);
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();

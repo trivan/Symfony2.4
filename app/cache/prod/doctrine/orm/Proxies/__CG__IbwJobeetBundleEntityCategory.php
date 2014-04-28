@@ -64,10 +64,10 @@ class Category extends \Ibw\JobeetBundle\Entity\Category implements \Doctrine\OR
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', 'id', 'name', 'jobs', 'affiliates');
+            return array('__isInitialized__', 'id', 'name', 'jobs', 'affiliates', 'active_jobs');
         }
 
-        return array('__isInitialized__', 'id', 'name', 'jobs', 'affiliates');
+        return array('__isInitialized__', 'id', 'name', 'jobs', 'affiliates', 'active_jobs');
     }
 
     /**
@@ -274,6 +274,28 @@ class Category extends \Ibw\JobeetBundle\Entity\Category implements \Doctrine\OR
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAffiliates', array());
 
         return parent::getAffiliates();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setActiveJobs($jobs)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setActiveJobs', array($jobs));
+
+        return parent::setActiveJobs($jobs);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getActiveJobs()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getActiveJobs', array());
+
+        return parent::getActiveJobs();
     }
 
     /**

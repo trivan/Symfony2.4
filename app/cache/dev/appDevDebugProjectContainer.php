@@ -3427,7 +3427,7 @@ class appDevDebugProjectContainer extends Container
             'kernel.root_dir' => 'C:/wamp/www/GIT/Symfony2.4/app',
             'kernel.environment' => 'dev',
             'kernel.debug' => true,
-            'kernel.name' => 'app',
+            'kernel.name' => 'ap_',
             'kernel.cache_dir' => 'C:/wamp/www/GIT/Symfony2.4/app/cache/dev',
             'kernel.logs_dir' => 'C:/wamp/www/GIT/Symfony2.4/app/logs',
             'kernel.bundles' => array(
@@ -3454,6 +3454,7 @@ class appDevDebugProjectContainer extends Container
             'database_name' => 'jobeet',
             'database_user' => 'root',
             'database_password' => NULL,
+            'max_jobs_on_homepage' => 10,
             'mailer_transport' => 'smtp',
             'mailer_host' => '127.0.0.1',
             'mailer_user' => NULL,
