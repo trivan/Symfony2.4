@@ -1167,6 +1167,7 @@ class appProdProjectContainer extends Container
             'database_user' => 'root',
             'database_password' => NULL,
             'max_jobs_on_homepage' => 10,
+            'max_jobs_on_category' => 20,
             'mailer_transport' => 'smtp',
             'mailer_host' => '127.0.0.1',
             'mailer_user' => NULL,
