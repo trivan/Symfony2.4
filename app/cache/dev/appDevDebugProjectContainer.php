@@ -3427,7 +3427,7 @@ class appDevDebugProjectContainer extends Container
             'kernel.root_dir' => 'C:/wamp/www/GIT/Symfony2.4/app',
             'kernel.environment' => 'dev',
             'kernel.debug' => true,
-            'kernel.name' => 'app',
+            'kernel.name' => 'ap_',
             'kernel.cache_dir' => 'C:/wamp/www/GIT/Symfony2.4/app/cache/dev',
             'kernel.logs_dir' => 'C:/wamp/www/GIT/Symfony2.4/app/logs',
             'kernel.bundles' => array(
