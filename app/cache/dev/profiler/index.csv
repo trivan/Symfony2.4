@@ -23,3 +23,6 @@ a3d829,127.0.0.1,GET,http://local.symfony.com/app_dev.php/job/asd/asd/9cd0fb8c51
 be3a09,127.0.0.1,GET,http://local.symfony.com/app_dev.php/job/asd/asd/9cd0fb8c51436f2ed6762617a486a4ba4f636844/asd,1399020862,
 771173,127.0.0.1,GET,http://local.symfony.com/app_dev.php/,1399020869,
 c0c3d3,127.0.0.1,GET,http://local.symfony.com/app_dev.php/job/asd/asd/39/asd,1399020875,
+36f922,127.0.0.1,GET,http://local.symfony.com/app_dev.php/job/new,1399028630,
+78be4f,127.0.0.1,POST,http://local.symfony.com/app_dev.php/job/create,1399028701,
+ac5799,127.0.0.1,GET,http://local.symfony.com/app_dev.php/job/sensio-labs/atlanta-usa/b9cd128585e39a1c0af99558d5f705de07b15ccf/developer,1399028702,

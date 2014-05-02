@@ -214,6 +214,17 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
             not_ibw_job_delete:
 
+            // ibw_job_extend
+            if (preg_match('#^/job/(?P<token>[^/]++)/extend$#s', $pathinfo, $matches)) {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_ibw_job_extend;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'ibw_job_extend')), array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\JobController::extendAction',));
+            }
+            not_ibw_job_extend:
+
         }
 
         // ibw_jobeet_homepage
