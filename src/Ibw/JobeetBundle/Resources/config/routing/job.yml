@@ -8,6 +8,12 @@ ibw_job_show:
     requirements:
         id:  \d+
 
+ibw_job_preview:
+    pattern:  /{company}/{location}/{token}/{position}
+    defaults: { _controller: "IbwJobeetBundle:Job:preview" }
+    requirements:
+        token:  \w+
+
 ibw_job_new:
     pattern:  /new
     defaults: { _controller: "IbwJobeetBundle:Job:new" }
@@ -17,16 +23,21 @@ ibw_job_create:
     defaults: { _controller: "IbwJobeetBundle:Job:create" }
     requirements: { _method: post }
 
-ibw_job_edit:
-    pattern:  /{id}/edit
-    defaults: { _controller: "IbwJobeetBundle:Job:edit" }
+ibw_job_publish:
+    pattern:  /{token}/publish
+    defaults: { _controller: "IbwJobeetBundle:Job:publish" }
+    requirements: { _method: post }
 
+ibw_job_edit:
+    pattern:  /{token}/edit
+    defaults: { _controller: "IbwJobeetBundle:Job:edit" }
+ 
 ibw_job_update:
-    pattern:  /{id}/update
+    pattern:  /{token}/update
     defaults: { _controller: "IbwJobeetBundle:Job:update" }
     requirements: { _method: post|put }
-
+ 
 ibw_job_delete:
-    pattern:  /{id}/delete
+    pattern:  /{token}/delete
     defaults: { _controller: "IbwJobeetBundle:Job:delete" }
     requirements: { _method: post|delete }

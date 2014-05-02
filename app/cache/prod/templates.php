@@ -79,6 +79,7 @@
   'DoctrineBundle:Collector:explain.html.twig' => 'C:\\wamp\\www\\GIT\\Symfony2.4\\vendor\\doctrine\\doctrine-bundle\\Doctrine\\Bundle\\DoctrineBundle/Resources/views/Collector/explain.html.twig',
   'IbwJobeetBundle:Category:show.html.twig' => 'C:\\wamp\\www\\GIT\\Symfony2.4\\src\\Ibw\\JobeetBundle/Resources/views/Category/show.html.twig',
   'IbwJobeetBundle:Default:index.html.twig' => 'C:\\wamp\\www\\GIT\\Symfony2.4\\src\\Ibw\\JobeetBundle/Resources/views/Default/index.html.twig',
+  'IbwJobeetBundle:Job:admin.html.twig' => 'C:\\wamp\\www\\GIT\\Symfony2.4\\src\\Ibw\\JobeetBundle/Resources/views/Job/admin.html.twig',
   'IbwJobeetBundle:Job:edit.html.twig' => 'C:\\wamp\\www\\GIT\\Symfony2.4\\src\\Ibw\\JobeetBundle/Resources/views/Job/edit.html.twig',
   'IbwJobeetBundle:Job:index.html.twig' => 'C:\\wamp\\www\\GIT\\Symfony2.4\\src\\Ibw\\JobeetBundle/Resources/views/Job/index.html.twig',
   'IbwJobeetBundle:Job:list.html.twig' => 'C:\\wamp\\www\\GIT\\Symfony2.4\\src\\Ibw\\JobeetBundle/Resources/views/Job/list.html.twig',

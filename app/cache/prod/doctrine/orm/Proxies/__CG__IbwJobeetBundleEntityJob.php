@@ -64,10 +64,10 @@ class Job extends \Ibw\JobeetBundle\Entity\Job implements \Doctrine\ORM\Proxy\Pr
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', 'id', 'type', 'company', 'logo', 'url', 'position', 'location', 'description', 'how_to_apply', 'token', 'is_public', 'is_activated', 'email', 'expires_at', 'created_at', 'updated_at', 'category');
+            return array('__isInitialized__', 'id', 'type', 'company', 'logo', 'url', 'position', 'location', 'description', 'how_to_apply', 'token', 'is_public', 'is_activated', 'email', 'expires_at', 'created_at', 'updated_at', 'category', 'file');
         }
 
-        return array('__isInitialized__', 'id', 'type', 'company', 'logo', 'url', 'position', 'location', 'description', 'how_to_apply', 'token', 'is_public', 'is_activated', 'email', 'expires_at', 'created_at', 'updated_at', 'category');
+        return array('__isInitialized__', 'id', 'type', 'company', 'logo', 'url', 'position', 'location', 'description', 'how_to_apply', 'token', 'is_public', 'is_activated', 'email', 'expires_at', 'created_at', 'updated_at', 'category', 'file');
     }
 
     /**
@@ -604,6 +604,116 @@ class Job extends \Ibw\JobeetBundle\Entity\Job implements \Doctrine\ORM\Proxy\Pr
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setExpiresAtValue', array());
 
         return parent::setExpiresAtValue();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getWebPath()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getWebPath', array());
+
+        return parent::getWebPath();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getAbsolutePath()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAbsolutePath', array());
+
+        return parent::getAbsolutePath();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function preUpload()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'preUpload', array());
+
+        return parent::preUpload();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function upload()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'upload', array());
+
+        return parent::upload();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removeUpload()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeUpload', array());
+
+        return parent::removeUpload();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setTokenValue()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTokenValue', array());
+
+        return parent::setTokenValue();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function isExpired()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'isExpired', array());
+
+        return parent::isExpired();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function expiresSoon()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'expiresSoon', array());
+
+        return parent::expiresSoon();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getDaysBeforeExpires()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDaysBeforeExpires', array());
+
+        return parent::getDaysBeforeExpires();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function publish()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'publish', array());
+
+        return parent::publish();
     }
 
 }

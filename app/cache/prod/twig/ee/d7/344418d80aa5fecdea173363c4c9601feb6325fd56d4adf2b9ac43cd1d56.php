@@ -61,7 +61,7 @@ class __TwigTemplate_eed7344418d80aa5fecdea173363c4c9601feb6325fd56d4adf2b9ac43c
                             <div>
                                 <a href=\"";
         // line 29
-        echo $this->env->getExtension('routing')->getPath("ibw_job");
+        echo $this->env->getExtension('routing')->getPath("ibw_job_new");
         echo "\">Post a Job</a>
                             </div>
                         </div>
