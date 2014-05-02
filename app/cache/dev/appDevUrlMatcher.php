@@ -135,6 +135,130 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
+        if (0 === strpos($pathinfo, '/admin')) {
+            // sonata_admin_redirect
+            if (rtrim($pathinfo, '/') === '/admin') {
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'sonata_admin_redirect');
+                }
+
+                return array (  '_controller' => 'Symfony\\Bundle\\FrameworkBundle\\Controller\\RedirectController::redirectAction',  'route' => 'sonata_admin_dashboard',  'permanent' => 'true',  '_route' => 'sonata_admin_redirect',);
+            }
+
+            // sonata_admin_dashboard
+            if ($pathinfo === '/admin/dashboard') {
+                return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CoreController::dashboardAction',  '_route' => 'sonata_admin_dashboard',);
+            }
+
+            if (0 === strpos($pathinfo, '/admin/core')) {
+                // sonata_admin_retrieve_form_element
+                if ($pathinfo === '/admin/core/get-form-field-element') {
+                    return array (  '_controller' => 'sonata.admin.controller.admin:retrieveFormFieldElementAction',  '_route' => 'sonata_admin_retrieve_form_element',);
+                }
+
+                // sonata_admin_append_form_element
+                if ($pathinfo === '/admin/core/append-form-field-element') {
+                    return array (  '_controller' => 'sonata.admin.controller.admin:appendFormFieldElementAction',  '_route' => 'sonata_admin_append_form_element',);
+                }
+
+                // sonata_admin_short_object_information
+                if (0 === strpos($pathinfo, '/admin/core/get-short-object-description') && preg_match('#^/admin/core/get\\-short\\-object\\-description(?:\\.(?P<_format>html|json))?$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'sonata_admin_short_object_information')), array (  '_controller' => 'sonata.admin.controller.admin:getShortObjectDescriptionAction',  '_format' => 'html',));
+                }
+
+                // sonata_admin_set_object_field_value
+                if ($pathinfo === '/admin/core/set-object-field-value') {
+                    return array (  '_controller' => 'sonata.admin.controller.admin:setObjectFieldValueAction',  '_route' => 'sonata_admin_set_object_field_value',);
+                }
+
+            }
+
+            // sonata_admin_search
+            if ($pathinfo === '/admin/search') {
+                return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CoreController::searchAction',  '_route' => 'sonata_admin_search',);
+            }
+
+            if (0 === strpos($pathinfo, '/admin/ibw/jobeet')) {
+                if (0 === strpos($pathinfo, '/admin/ibw/jobeet/category')) {
+                    // admin_ibw_jobeet_category_list
+                    if ($pathinfo === '/admin/ibw/jobeet/category/list') {
+                        return array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\CategoryAdminController::listAction',  '_sonata_admin' => 'ibw.jobeet.admin.category',  '_sonata_name' => 'admin_ibw_jobeet_category_list',  '_route' => 'admin_ibw_jobeet_category_list',);
+                    }
+
+                    // admin_ibw_jobeet_category_create
+                    if ($pathinfo === '/admin/ibw/jobeet/category/create') {
+                        return array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\CategoryAdminController::createAction',  '_sonata_admin' => 'ibw.jobeet.admin.category',  '_sonata_name' => 'admin_ibw_jobeet_category_create',  '_route' => 'admin_ibw_jobeet_category_create',);
+                    }
+
+                    // admin_ibw_jobeet_category_batch
+                    if ($pathinfo === '/admin/ibw/jobeet/category/batch') {
+                        return array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\CategoryAdminController::batchAction',  '_sonata_admin' => 'ibw.jobeet.admin.category',  '_sonata_name' => 'admin_ibw_jobeet_category_batch',  '_route' => 'admin_ibw_jobeet_category_batch',);
+                    }
+
+                    // admin_ibw_jobeet_category_edit
+                    if (preg_match('#^/admin/ibw/jobeet/category/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_ibw_jobeet_category_edit')), array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\CategoryAdminController::editAction',  '_sonata_admin' => 'ibw.jobeet.admin.category',  '_sonata_name' => 'admin_ibw_jobeet_category_edit',));
+                    }
+
+                    // admin_ibw_jobeet_category_delete
+                    if (preg_match('#^/admin/ibw/jobeet/category/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_ibw_jobeet_category_delete')), array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\CategoryAdminController::deleteAction',  '_sonata_admin' => 'ibw.jobeet.admin.category',  '_sonata_name' => 'admin_ibw_jobeet_category_delete',));
+                    }
+
+                    // admin_ibw_jobeet_category_show
+                    if (preg_match('#^/admin/ibw/jobeet/category/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_ibw_jobeet_category_show')), array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\CategoryAdminController::showAction',  '_sonata_admin' => 'ibw.jobeet.admin.category',  '_sonata_name' => 'admin_ibw_jobeet_category_show',));
+                    }
+
+                    // admin_ibw_jobeet_category_export
+                    if ($pathinfo === '/admin/ibw/jobeet/category/export') {
+                        return array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\CategoryAdminController::exportAction',  '_sonata_admin' => 'ibw.jobeet.admin.category',  '_sonata_name' => 'admin_ibw_jobeet_category_export',  '_route' => 'admin_ibw_jobeet_category_export',);
+                    }
+
+                }
+
+                if (0 === strpos($pathinfo, '/admin/ibw/jobeet/job')) {
+                    // admin_ibw_jobeet_job_list
+                    if ($pathinfo === '/admin/ibw/jobeet/job/list') {
+                        return array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\JobAdminController::listAction',  '_sonata_admin' => 'ibw.jobeet.admin.job',  '_sonata_name' => 'admin_ibw_jobeet_job_list',  '_route' => 'admin_ibw_jobeet_job_list',);
+                    }
+
+                    // admin_ibw_jobeet_job_create
+                    if ($pathinfo === '/admin/ibw/jobeet/job/create') {
+                        return array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\JobAdminController::createAction',  '_sonata_admin' => 'ibw.jobeet.admin.job',  '_sonata_name' => 'admin_ibw_jobeet_job_create',  '_route' => 'admin_ibw_jobeet_job_create',);
+                    }
+
+                    // admin_ibw_jobeet_job_batch
+                    if ($pathinfo === '/admin/ibw/jobeet/job/batch') {
+                        return array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\JobAdminController::batchAction',  '_sonata_admin' => 'ibw.jobeet.admin.job',  '_sonata_name' => 'admin_ibw_jobeet_job_batch',  '_route' => 'admin_ibw_jobeet_job_batch',);
+                    }
+
+                    // admin_ibw_jobeet_job_edit
+                    if (preg_match('#^/admin/ibw/jobeet/job/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_ibw_jobeet_job_edit')), array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\JobAdminController::editAction',  '_sonata_admin' => 'ibw.jobeet.admin.job',  '_sonata_name' => 'admin_ibw_jobeet_job_edit',));
+                    }
+
+                    // admin_ibw_jobeet_job_delete
+                    if (preg_match('#^/admin/ibw/jobeet/job/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_ibw_jobeet_job_delete')), array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\JobAdminController::deleteAction',  '_sonata_admin' => 'ibw.jobeet.admin.job',  '_sonata_name' => 'admin_ibw_jobeet_job_delete',));
+                    }
+
+                    // admin_ibw_jobeet_job_show
+                    if (preg_match('#^/admin/ibw/jobeet/job/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_ibw_jobeet_job_show')), array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\JobAdminController::showAction',  '_sonata_admin' => 'ibw.jobeet.admin.job',  '_sonata_name' => 'admin_ibw_jobeet_job_show',));
+                    }
+
+                    // admin_ibw_jobeet_job_export
+                    if ($pathinfo === '/admin/ibw/jobeet/job/export') {
+                        return array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\JobAdminController::exportAction',  '_sonata_admin' => 'ibw.jobeet.admin.job',  '_sonata_name' => 'admin_ibw_jobeet_job_export',  '_route' => 'admin_ibw_jobeet_job_export',);
+                    }
+
+                }
+
+            }
+
+        }
+
         // ibw_jobeet_hello
         if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'ibw_jobeet_hello')), array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\DefaultController::indexAction',));
