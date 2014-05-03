@@ -4,6 +4,30 @@ use Doctrine\ORM\EntityRepository;
 
 class JobRepository extends EntityRepository
 {
+    public function getLatestPost($category_id = null)
+    {
+        $query = $this->createQueryBuilder('j')
+        ->where('j.expires_at > :date')
+        ->setParameter('date', date('Y-m-d H:i:s', time()))
+        ->andWhere('j.is_activated = :activated')
+        ->setParameter('activated', 1)
+        ->orderBy('j.expires_at', 'DESC')
+        ->setMaxResults(1);
+    
+        if($category_id) {
+            $query->andWhere('j.category = :category_id')
+            ->setParameter('category_id', $category_id);
+        }
+    
+        try{
+            $job = $query->getQuery()->getSingleResult();
+        } catch(\Doctrine\Orm\NoResultException $e){
+            $job = null;
+        }
+    
+        return $job;
+    }
+
     public function getActiveJobs($category_id = null, $max = null, $offset = null)
     {
         $qb = $this->createQueryBuilder('j')
@@ -71,13 +95,13 @@ class JobRepository extends EntityRepository
 
     public function cleanup($days)
     {
-    	$query = $this->createQueryBuilder('j')
-    	->delete()
-    	->where('j.is_activated IS NULL')
-    	->andWhere('j.created_at < :created_at')
-    	->setParameter('created_at',  date('Y-m-d', time() - 86400 * $days))
-    	->getQuery();
+        $query = $this->createQueryBuilder('j')
+        ->delete()
+        ->where('j.is_activated IS NULL')
+        ->andWhere('j.created_at < :created_at')
+        ->setParameter('created_at',  date('Y-m-d', time() - 86400 * $days))
+        ->getQuery();
     
-    	return $query->execute();
+        return $query->execute();
     }
 }

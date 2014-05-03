@@ -20,7 +20,7 @@ class __TwigTemplate_eed7344418d80aa5fecdea173363c4c9601feb6325fd56d4adf2b9ac43c
     protected function doDisplay(array $context, array $blocks = array())
     {
         // line 1
-        echo "<!DOCTYPE html>
+        echo "\t<!DOCTYPE html>
 <html>
     <head>
         <title>
@@ -40,17 +40,21 @@ class __TwigTemplate_eed7344418d80aa5fecdea173363c4c9601feb6325fd56d4adf2b9ac43c
         echo "        <link rel=\"shortcut icon\" href=\"";
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/ibwjobeet/images/favicon.ico"), "html", null, true);
         echo "\" />
+        <link rel=\"alternate\" type=\"application/atom+xml\" title=\"Latest Jobs\" href=\"";
+        // line 16
+        echo $this->env->getExtension('routing')->getUrl("ibw_job", array("_format" => "atom"));
+        echo "\" />
     </head>
     <body>
         <div id=\"container\">
             <div id=\"header\">
                 <div class=\"content\">
                     <h1><a href=\"";
-        // line 21
+        // line 22
         echo $this->env->getExtension('routing')->getPath("ibw_jobeet_homepage");
         echo "\">
                         <img alt=\"Jobeet Job Board\" src=\"";
-        // line 22
+        // line 23
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/ibwjobeet/images/logo.jpg"), "html", null, true);
         echo "\" />
                     </a></h1>
@@ -60,7 +64,7 @@ class __TwigTemplate_eed7344418d80aa5fecdea173363c4c9601feb6325fd56d4adf2b9ac43c
                             <h2>Ask for people</h2>
                             <div>
                                 <a href=\"";
-        // line 29
+        // line 30
         echo $this->env->getExtension('routing')->getPath("ibw_job_new");
         echo "\">Post a Job</a>
                             </div>
@@ -84,14 +88,14 @@ class __TwigTemplate_eed7344418d80aa5fecdea173363c4c9601feb6325fd56d4adf2b9ac43c
     Recent viewed jobs:
     <ul>
         ";
-        // line 50
+        // line 51
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : null), "session"), "get", array(0 => "job_history"), "method"));
         foreach ($context['_seq'] as $context["_key"] => $context["job"]) {
-            // line 51
+            // line 52
             echo "            <li>
                 <a href=\"";
-            // line 52
+            // line 53
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("ibw_job_show", array("id" => $this->getAttribute((isset($context["job"]) ? $context["job"] : null), "id"), "company" => $this->getAttribute((isset($context["job"]) ? $context["job"] : null), "companyslug"), "location" => $this->getAttribute((isset($context["job"]) ? $context["job"] : null), "locationslug"), "position" => $this->getAttribute((isset($context["job"]) ? $context["job"] : null), "positionslug"))), "html", null, true);
             echo "\">";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["job"]) ? $context["job"] : null), "position"), "html", null, true);
@@ -104,22 +108,20 @@ class __TwigTemplate_eed7344418d80aa5fecdea173363c4c9601feb6325fd56d4adf2b9ac43c
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['job'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 55
+        // line 56
         echo "    </ul>
 </div>
- 
-<div id=\"content\">
 
            <div id=\"content\">
                ";
-        // line 61
+        // line 60
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : null), "session"), "flashbag"), "get", array(0 => "notice"), "method"));
         foreach ($context['_seq'] as $context["_key"] => $context["flashMessage"]) {
-            // line 62
+            // line 61
             echo "                   <div class=\"flash_notice\">
                        ";
-            // line 63
+            // line 62
             echo twig_escape_filter($this->env, (isset($context["flashMessage"]) ? $context["flashMessage"] : null), "html", null, true);
             echo "
                    </div>
@@ -128,17 +130,17 @@ class __TwigTemplate_eed7344418d80aa5fecdea173363c4c9601feb6325fd56d4adf2b9ac43c
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['flashMessage'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 66
+        // line 65
         echo " 
                ";
-        // line 67
+        // line 66
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : null), "session"), "flashbag"), "get", array(0 => "error"), "method"));
         foreach ($context['_seq'] as $context["_key"] => $context["flashMessage"]) {
-            // line 68
+            // line 67
             echo "                   <div class=\"flash_error\">
                        ";
-            // line 69
+            // line 68
             echo twig_escape_filter($this->env, (isset($context["flashMessage"]) ? $context["flashMessage"] : null), "html", null, true);
             echo "
                    </div>
@@ -147,13 +149,13 @@ class __TwigTemplate_eed7344418d80aa5fecdea173363c4c9601feb6325fd56d4adf2b9ac43c
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['flashMessage'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 72
+        // line 71
         echo " 
                <div class=\"content\">
                    ";
-        // line 74
+        // line 73
         $this->displayBlock('content', $context, $blocks);
-        // line 76
+        // line 75
         echo "               </div>
            </div>
  
@@ -161,19 +163,22 @@ class __TwigTemplate_eed7344418d80aa5fecdea173363c4c9601feb6325fd56d4adf2b9ac43c
                <div class=\"content\">
                    <span class=\"symfony\">
                        <img src=\"";
-        // line 82
+        // line 81
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/ibwjobeet/images/jobeet-mini.png"), "html", null, true);
         echo "\" />
                            powered by <a href=\"http://www.symfony.com/\">
                            <img src=\"";
-        // line 84
+        // line 83
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/ibwjobeet/images/symfony.gif"), "html", null, true);
         echo "\" alt=\"symfony framework\" />
                        </a>
                    </span>
                    <ul>
                        <li><a href=\"\">About Jobeet</a></li>
-                       <li class=\"feed\"><a href=\"\">Full feed</a></li>
+                       <li class=\"feed\"><a href=\"";
+        // line 88
+        echo $this->env->getExtension('routing')->getPath("ibw_job", array("_format" => "atom"));
+        echo "\">Full feed</a></li>
                        <li><a href=\"\">Jobeet API</a></li>
                        <li class=\"last\"><a href=\"\">Affiliates</a></li>
                    </ul>
@@ -209,10 +214,10 @@ class __TwigTemplate_eed7344418d80aa5fecdea173363c4c9601feb6325fd56d4adf2b9ac43c
         echo "        ";
     }
 
-    // line 74
+    // line 73
     public function block_content($context, array $blocks = array())
     {
-        // line 75
+        // line 74
         echo "                   ";
     }
 
@@ -228,6 +233,6 @@ class __TwigTemplate_eed7344418d80aa5fecdea173363c4c9601feb6325fd56d4adf2b9ac43c
 
     public function getDebugInfo()
     {
-        return array (  216 => 75,  213 => 74,  206 => 13,  191 => 6,  188 => 5,  165 => 82,  157 => 76,  139 => 68,  120 => 62,  37 => 13,  23 => 1,  170 => 84,  160 => 54,  155 => 74,  134 => 42,  127 => 40,  113 => 37,  104 => 34,  100 => 33,  90 => 29,  84 => 26,  77 => 24,  70 => 21,  480 => 162,  474 => 161,  469 => 158,  461 => 155,  457 => 153,  453 => 151,  444 => 149,  440 => 148,  437 => 147,  435 => 146,  430 => 144,  427 => 143,  423 => 142,  413 => 134,  409 => 132,  407 => 131,  402 => 130,  398 => 129,  393 => 126,  387 => 122,  384 => 121,  381 => 120,  379 => 119,  374 => 116,  368 => 112,  365 => 111,  362 => 110,  360 => 109,  355 => 106,  341 => 105,  337 => 103,  322 => 101,  314 => 99,  312 => 98,  309 => 97,  305 => 95,  298 => 91,  294 => 90,  285 => 89,  283 => 88,  278 => 86,  268 => 85,  264 => 84,  258 => 81,  252 => 80,  247 => 78,  241 => 77,  229 => 73,  220 => 70,  214 => 69,  177 => 65,  169 => 60,  140 => 45,  132 => 66,  128 => 49,  111 => 37,  107 => 35,  61 => 13,  273 => 96,  269 => 94,  254 => 92,  246 => 90,  243 => 88,  240 => 86,  238 => 85,  235 => 74,  230 => 82,  227 => 81,  224 => 71,  221 => 77,  219 => 76,  217 => 75,  208 => 68,  204 => 72,  179 => 69,  159 => 61,  143 => 56,  135 => 67,  131 => 52,  119 => 42,  108 => 55,  102 => 32,  71 => 19,  67 => 15,  63 => 15,  59 => 14,  47 => 9,  38 => 6,  94 => 30,  89 => 20,  85 => 25,  79 => 18,  75 => 23,  68 => 14,  56 => 9,  50 => 21,  29 => 5,  87 => 25,  72 => 16,  55 => 15,  21 => 2,  26 => 6,  98 => 31,  93 => 28,  88 => 50,  78 => 21,  46 => 7,  27 => 4,  40 => 15,  44 => 12,  35 => 10,  31 => 8,  43 => 8,  41 => 7,  28 => 3,  201 => 92,  196 => 10,  183 => 82,  171 => 61,  166 => 71,  163 => 62,  158 => 67,  156 => 66,  151 => 72,  142 => 69,  138 => 54,  136 => 56,  123 => 63,  121 => 39,  117 => 44,  115 => 43,  105 => 40,  101 => 32,  91 => 27,  69 => 25,  66 => 15,  62 => 23,  49 => 19,  24 => 4,  32 => 4,  25 => 3,  22 => 2,  19 => 1,  209 => 14,  203 => 78,  199 => 11,  193 => 73,  189 => 71,  187 => 84,  182 => 66,  176 => 64,  173 => 65,  168 => 72,  164 => 59,  162 => 55,  154 => 58,  149 => 51,  147 => 58,  144 => 46,  141 => 48,  133 => 55,  130 => 41,  125 => 44,  122 => 43,  116 => 61,  112 => 42,  109 => 34,  106 => 33,  103 => 32,  99 => 31,  95 => 52,  92 => 51,  86 => 28,  82 => 22,  80 => 25,  73 => 19,  64 => 29,  60 => 13,  57 => 13,  54 => 22,  51 => 14,  48 => 9,  45 => 8,  42 => 7,  39 => 9,  36 => 5,  33 => 4,  30 => 3,);
+        return array (  221 => 74,  218 => 73,  214 => 14,  211 => 13,  204 => 11,  201 => 10,  196 => 6,  193 => 5,  180 => 88,  172 => 83,  167 => 81,  159 => 75,  157 => 73,  153 => 71,  144 => 68,  141 => 67,  137 => 66,  134 => 65,  125 => 62,  122 => 61,  118 => 60,  112 => 56,  99 => 53,  96 => 52,  92 => 51,  58 => 23,  54 => 22,  45 => 16,  40 => 15,  35 => 10,  31 => 8,  23 => 1,  105 => 35,  97 => 32,  89 => 28,  87 => 27,  84 => 26,  82 => 25,  77 => 23,  70 => 20,  68 => 30,  63 => 16,  61 => 15,  53 => 11,  49 => 10,  46 => 9,  43 => 8,  37 => 13,  32 => 4,  29 => 5,);
     }
 }

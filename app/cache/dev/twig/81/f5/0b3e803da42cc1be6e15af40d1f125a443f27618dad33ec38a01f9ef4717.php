@@ -54,32 +54,38 @@ class __TwigTemplate_81f50b3e803da42cc1be6e15af40d1f125a443f27618dad33ec38a01f9e
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["category"]) ? $context["category"] : $this->getContext($context, "category")), "slug"), "html", null, true);
             echo "\">
                 <div class=\"category\">
-                    <div class=\"feed\">
-                        <a href=\"\">Feed</a>
-                    </div>
-                    <h1><a href=\"";
+
+                         <div class=\"feed\">
+                             <a href=\"";
+            // line 15
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("IbwJobeetBundle_category", array("slug" => $this->getAttribute((isset($context["category"]) ? $context["category"] : $this->getContext($context, "category")), "slug"), "_format" => "atom")), "html", null, true);
             // line 16
+            echo "\">Feed</a>
+                         </div>
+
+                    <h1><a href=\"";
+            // line 19
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("IbwJobeetBundle_category", array("slug" => $this->getAttribute((isset($context["category"]) ? $context["category"] : $this->getContext($context, "category")), "slug"))), "html", null, true);
-            // line 17
+            // line 20
             echo "\">";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["category"]) ? $context["category"] : $this->getContext($context, "category")), "name"), "html", null, true);
             echo "</a></h1>
                 </div>
 
                 ";
-            // line 20
+            // line 23
             echo twig_include($this->env, $context, "IbwJobeetBundle:Job:list.html.twig", array("jobs" => $this->getAttribute((isset($context["category"]) ? $context["category"] : $this->getContext($context, "category")), "activejobs")));
             echo "
 
                 ";
-            // line 22
+            // line 25
             if ($this->getAttribute((isset($context["category"]) ? $context["category"] : $this->getContext($context, "category")), "morejobs")) {
-                // line 23
+                // line 26
                 echo "                    <div class=\"more_jobs\">
                         and <a href=\"";
-                // line 24
+                // line 27
                 echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("IbwJobeetBundle_category", array("slug" => $this->getAttribute((isset($context["category"]) ? $context["category"] : $this->getContext($context, "category")), "slug"))), "html", null, true);
-                // line 25
+                // line 28
                 echo "\">";
                 echo twig_escape_filter($this->env, $this->getAttribute((isset($context["category"]) ? $context["category"] : $this->getContext($context, "category")), "morejobs"), "html", null, true);
                 echo "</a>
@@ -87,7 +93,7 @@ class __TwigTemplate_81f50b3e803da42cc1be6e15af40d1f125a443f27618dad33ec38a01f9e
                     </div>
                 ";
             }
-            // line 29
+            // line 32
             echo "
             </div>
         ";
@@ -95,7 +101,7 @@ class __TwigTemplate_81f50b3e803da42cc1be6e15af40d1f125a443f27618dad33ec38a01f9e
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['category'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 32
+        // line 35
         echo "    </div>
 ";
     }
@@ -112,6 +118,6 @@ class __TwigTemplate_81f50b3e803da42cc1be6e15af40d1f125a443f27618dad33ec38a01f9e
 
     public function getDebugInfo()
     {
-        return array (  99 => 32,  91 => 29,  83 => 25,  81 => 24,  78 => 23,  76 => 22,  71 => 20,  64 => 17,  62 => 16,  53 => 11,  49 => 10,  46 => 9,  43 => 8,  37 => 5,  32 => 4,  29 => 3,);
+        return array (  105 => 35,  97 => 32,  89 => 28,  87 => 27,  84 => 26,  82 => 25,  77 => 23,  70 => 20,  68 => 19,  63 => 16,  61 => 15,  53 => 11,  49 => 10,  46 => 9,  43 => 8,  37 => 5,  32 => 4,  29 => 3,);
     }
 }
