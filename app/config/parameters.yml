@@ -10,10 +10,10 @@ parameters:
     max_jobs_on_homepage: 10
     max_jobs_on_category: 20
 
-    mailer_transport: smtp
-    mailer_host: 127.0.0.1
-    mailer_user: null
-    mailer_password: null
+    mailer_transport: gmail
+    mailer_host: ~
+    mailer_user: address@example.com
+    mailer_password: your_password
 
     locale: en
     secret: ThisTokenIsNotSoSecretChangeIt

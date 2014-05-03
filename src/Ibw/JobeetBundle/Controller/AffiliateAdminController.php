@@ -19,14 +19,25 @@ class AffiliateAdminController extends Controller
         $selectedModels = $selectedModelQuery->execute();
  
         try {
-            foreach($selectedModels as $selectedModel) {
-                $selectedModel->activate();
-                $modelManager->update($selectedModel);
-            }
-        } catch(\Exception $e) {
-            $this->get('session')->getFlashBag()->add('sonata_flash_error', $e->getMessage());
- 
-            return new RedirectResponse($this->admin->generateUrl('list',$this->admin->getFilterParameters()));
+        	foreach($selectedModels as $selectedModel) {
+        		$selectedModel->activate();
+        		$modelManager->update($selectedModel);
+        
+        		$message = \Swift_Message::newInstance()
+        		->setSubject('Jobeet affiliate token')
+        		->setFrom('address@example.com')
+        		->setTo($selectedModel->getEmail())
+        		->setBody(
+        				$this->renderView('IbwJobeetBundle:Affiliate:email.txt.twig', array('affiliate' => $selectedModel->getToken())))
+        				;
+        
+        		$this->get('mailer')->send($message);
+        	}
+        } 
+        catch(\Exception $e) {
+        	$this->get('session')->setFlash('sonata_flash_error', $e->getMessage());
+        
+        	return new RedirectResponse($this->admin->generateUrl('list',$this->admin->getFilterParameters()));
         }
  
         $this->get('session')->getFlashBag()->add('sonata_flash_success',  sprintf('The selected accounts have been activated'));
@@ -60,29 +71,37 @@ class AffiliateAdminController extends Controller
  
         return new RedirectResponse($this->admin->generateUrl('list',$this->admin->getFilterParameters()));
     }
-    
+
     public function activateAction($id)
     {
-    	if($this->admin->isGranted('EDIT') === false) {
-    		throw new AccessDeniedException();
-    	}
-    
-    	$em = $this->getDoctrine()->getManager();
-    	$affiliate = $em->getRepository('IbwJobeetBundle:Affiliate')->findOneById($id);
-    
-    	try {
-    		$affiliate->setIsActive(true);
-    		$em->flush();
-    	} catch(\Exception $e) {
-    		$this->get('session')->getFlashBag()->add('sonata_flash_error', $e->getMessage());
-    
-    		return new RedirectResponse($this->admin->generateUrl('list', $this->admin->getFilterParameters()));
-    	}
-    
-    	return new RedirectResponse($this->admin->generateUrl('list',$this->admin->getFilterParameters()));
-    
+       if($this->admin->isGranted('EDIT') === false) {
+            throw new AccessDeniedException();
+        }
+ 
+        $em = $this->getDoctrine()->getManager();
+        $affiliate = $em->getRepository('IbwJobeetBundle:Affiliate')->findOneById($id);
+ 
+        try {
+            $affiliate->setIsActive(true);
+            $em->flush();
+ 
+            $message = \Swift_Message::newInstance()
+                ->setSubject('Jobeet affiliate token')
+                ->setFrom('address@example.com')
+                ->setTo($affiliate->getEmail())
+                ->setBody(
+                    $this->renderView('IbwJobeetBundle:Affiliate:email.txt.twig', 
+                    		array('affiliate' => $affiliate->getToken())))
+            ;
+ 
+            $this->get('mailer')->send($message);
+        } catch(\Exception $e) {
+            $this->get('session')->setFlash('sonata_flash_error', $e->getMessage());
+        }
+ 
+        return new RedirectResponse($this->admin->generateUrl('list',$this->admin->getFilterParameters()));
     }
-    
+
     public function deactivateAction($id)
     {
     	if($this->admin->isGranted('EDIT') === false) {

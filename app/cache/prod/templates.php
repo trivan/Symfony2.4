@@ -78,6 +78,7 @@
   'DoctrineBundle:Collector:db.html.twig' => 'C:\\wamp\\www\\GIT\\Symfony2.4\\vendor\\doctrine\\doctrine-bundle\\Doctrine\\Bundle\\DoctrineBundle/Resources/views/Collector/db.html.twig',
   'DoctrineBundle:Collector:explain.html.twig' => 'C:\\wamp\\www\\GIT\\Symfony2.4\\vendor\\doctrine\\doctrine-bundle\\Doctrine\\Bundle\\DoctrineBundle/Resources/views/Collector/explain.html.twig',
   'IbwJobeetBundle:Affiliate:affiliate_new.html.twig' => 'C:\\wamp\\www\\GIT\\Symfony2.4\\src\\Ibw\\JobeetBundle/Resources/views/Affiliate/affiliate_new.html.twig',
+  'IbwJobeetBundle:Affiliate:email.txt.twig' => 'C:\\wamp\\www\\GIT\\Symfony2.4\\src\\Ibw\\JobeetBundle/Resources/views/Affiliate/email.txt.twig',
   'IbwJobeetBundle:Affiliate:wait.html.twig' => 'C:\\wamp\\www\\GIT\\Symfony2.4\\src\\Ibw\\JobeetBundle/Resources/views/Affiliate/wait.html.twig',
   'IbwJobeetBundle:AffiliateAdmin:list__action_activate.html.twig' => 'C:\\wamp\\www\\GIT\\Symfony2.4\\src\\Ibw\\JobeetBundle/Resources/views/AffiliateAdmin/list__action_activate.html.twig',
   'IbwJobeetBundle:AffiliateAdmin:list__action_deactivate.html.twig' => 'C:\\wamp\\www\\GIT\\Symfony2.4\\src\\Ibw\\JobeetBundle/Resources/views/AffiliateAdmin/list__action_deactivate.html.twig',
