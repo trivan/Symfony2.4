@@ -147,6 +147,54 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
 
                 }
 
+                if (0 === strpos($pathinfo, '/admin/ibw/jobeet/affiliate')) {
+                    // admin_ibw_jobeet_affiliate_list
+                    if ($pathinfo === '/admin/ibw/jobeet/affiliate/list') {
+                        return array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\AffiliateAdminController::listAction',  '_sonata_admin' => 'ibw.jobeet.admin.affiliate',  '_sonata_name' => 'admin_ibw_jobeet_affiliate_list',  '_route' => 'admin_ibw_jobeet_affiliate_list',);
+                    }
+
+                    // admin_ibw_jobeet_affiliate_create
+                    if ($pathinfo === '/admin/ibw/jobeet/affiliate/create') {
+                        return array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\AffiliateAdminController::createAction',  '_sonata_admin' => 'ibw.jobeet.admin.affiliate',  '_sonata_name' => 'admin_ibw_jobeet_affiliate_create',  '_route' => 'admin_ibw_jobeet_affiliate_create',);
+                    }
+
+                    // admin_ibw_jobeet_affiliate_batch
+                    if ($pathinfo === '/admin/ibw/jobeet/affiliate/batch') {
+                        return array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\AffiliateAdminController::batchAction',  '_sonata_admin' => 'ibw.jobeet.admin.affiliate',  '_sonata_name' => 'admin_ibw_jobeet_affiliate_batch',  '_route' => 'admin_ibw_jobeet_affiliate_batch',);
+                    }
+
+                    // admin_ibw_jobeet_affiliate_edit
+                    if (preg_match('#^/admin/ibw/jobeet/affiliate/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_ibw_jobeet_affiliate_edit')), array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\AffiliateAdminController::editAction',  '_sonata_admin' => 'ibw.jobeet.admin.affiliate',  '_sonata_name' => 'admin_ibw_jobeet_affiliate_edit',));
+                    }
+
+                    // admin_ibw_jobeet_affiliate_delete
+                    if (preg_match('#^/admin/ibw/jobeet/affiliate/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_ibw_jobeet_affiliate_delete')), array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\AffiliateAdminController::deleteAction',  '_sonata_admin' => 'ibw.jobeet.admin.affiliate',  '_sonata_name' => 'admin_ibw_jobeet_affiliate_delete',));
+                    }
+
+                    // admin_ibw_jobeet_affiliate_show
+                    if (preg_match('#^/admin/ibw/jobeet/affiliate/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_ibw_jobeet_affiliate_show')), array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\AffiliateAdminController::showAction',  '_sonata_admin' => 'ibw.jobeet.admin.affiliate',  '_sonata_name' => 'admin_ibw_jobeet_affiliate_show',));
+                    }
+
+                    // admin_ibw_jobeet_affiliate_export
+                    if ($pathinfo === '/admin/ibw/jobeet/affiliate/export') {
+                        return array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\AffiliateAdminController::exportAction',  '_sonata_admin' => 'ibw.jobeet.admin.affiliate',  '_sonata_name' => 'admin_ibw_jobeet_affiliate_export',  '_route' => 'admin_ibw_jobeet_affiliate_export',);
+                    }
+
+                    // admin_ibw_jobeet_affiliate_activate
+                    if (preg_match('#^/admin/ibw/jobeet/affiliate/(?P<id>[^/]++)/activate$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_ibw_jobeet_affiliate_activate')), array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\AffiliateAdminController::activateAction',  '_sonata_admin' => 'ibw.jobeet.admin.affiliate',  '_sonata_name' => 'admin_ibw_jobeet_affiliate_activate',));
+                    }
+
+                    // admin_ibw_jobeet_affiliate_deactivate
+                    if (preg_match('#^/admin/ibw/jobeet/affiliate/(?P<id>[^/]++)/deactivate$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_ibw_jobeet_affiliate_deactivate')), array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\AffiliateAdminController::deactivateAction',  '_sonata_admin' => 'ibw.jobeet.admin.affiliate',  '_sonata_name' => 'admin_ibw_jobeet_affiliate_deactivate',));
+                    }
+
+                }
+
             }
 
         }
@@ -274,6 +322,38 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
             // logout
             if ($pathinfo === '/logout') {
                 return array('_route' => 'logout');
+            }
+
+        }
+
+        if (0 === strpos($pathinfo, '/a')) {
+            // IbwJobeetBundle_api
+            if (0 === strpos($pathinfo, '/api') && preg_match('#^/api/(?P<token>[^/]++)/jobs\\.(?P<_format>xml|json|yaml)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'IbwJobeetBundle_api')), array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\ApiController::listAction',));
+            }
+
+            if (0 === strpos($pathinfo, '/affiliate')) {
+                // ibw_affiliate_new
+                if ($pathinfo === '/affiliate/new') {
+                    return array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\AffiliateController::newAction',  '_route' => 'ibw_affiliate_new',);
+                }
+
+                // ibw_affiliate_create
+                if ($pathinfo === '/affiliate/create') {
+                    if ($this->context->getMethod() != 'POST') {
+                        $allow[] = 'POST';
+                        goto not_ibw_affiliate_create;
+                    }
+
+                    return array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\AffiliateController::createAction',  '_route' => 'ibw_affiliate_create',);
+                }
+                not_ibw_affiliate_create:
+
+                // ibw_affiliate_wait
+                if ($pathinfo === '/affiliate/wait') {
+                    return array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\AffiliateController::waitAction',  '_route' => 'ibw_affiliate_wait',);
+                }
+
             }
 
         }

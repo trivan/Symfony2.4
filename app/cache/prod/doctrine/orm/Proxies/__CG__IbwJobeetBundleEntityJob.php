@@ -727,4 +727,15 @@ class Job extends \Ibw\JobeetBundle\Entity\Job implements \Doctrine\ORM\Proxy\Pr
         return parent::extend();
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    public function asArray($host)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'asArray', array($host));
+
+        return parent::asArray($host);
+    }
+
 }

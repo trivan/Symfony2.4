@@ -342,4 +342,37 @@ class Affiliate extends \Ibw\JobeetBundle\Entity\Affiliate implements \Doctrine\
         return parent::setCreatedAtValue();
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    public function setTokenValue()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTokenValue', array());
+
+        return parent::setTokenValue();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function activate()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'activate', array());
+
+        return parent::activate();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function deactivate()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'deactivate', array());
+
+        return parent::deactivate();
+    }
+
 }

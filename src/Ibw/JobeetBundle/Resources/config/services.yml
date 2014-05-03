@@ -20,6 +20,15 @@ services:
             - Ibw\JobeetBundle\Entity\Job
             - 'IbwJobeetBundle:JobAdmin'
 
+    ibw.jobeet.admin.affiliate:
+        class: Ibw\JobeetBundle\Admin\AffiliateAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: jobeet, label: Affiliates }
+        arguments:
+            - ~
+            - Ibw\JobeetBundle\Entity\Affiliate
+            - 'IbwJobeetBundle:AffiliateAdmin'
+
 #    ibw_jobeet.example:
 #        class: %ibw_jobeet.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]
