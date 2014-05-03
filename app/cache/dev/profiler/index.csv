@@ -1,5 +1,0 @@
-b55b23,127.0.0.1,GET,http://local.symfony.com/app_dev.php/admin/dashboard,1399111824,
-577741,127.0.0.1,GET,http://local.symfony.com/app_dev.php/admin/ibw/jobeet/affiliate/list,1399111830,
-a8dece,127.0.0.1,GET,http://local.symfony.com/app_dev.php/admin/ibw/jobeet/affiliate/5/activate,1399111840,
-7794b7,127.0.0.1,GET,http://local.symfony.com/app_dev.php/admin/ibw/jobeet/affiliate/list?_page=1&_per_page=25&_sort_by=is_active&_sort_order=ASC&is_active%5Bvalue%5D=2,1399111848,
-3e9da0,127.0.0.1,GET,http://local.symfony.com/app_dev.php/api/fd610c77b6756f25aa30d79585de9e8b486a8bb3/jobs.xml,1399111932,

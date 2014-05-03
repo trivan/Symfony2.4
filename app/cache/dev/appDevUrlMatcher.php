@@ -397,6 +397,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
             not_ibw_job_extend:
 
+            // ibw_job_search
+            if ($pathinfo === '/job/search') {
+                return array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\JobController::searchAction',  '_route' => 'ibw_job_search',);
+            }
+
         }
 
         // ibw_jobeet_homepage

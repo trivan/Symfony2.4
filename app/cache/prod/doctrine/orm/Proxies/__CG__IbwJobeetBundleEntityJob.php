@@ -738,4 +738,26 @@ class Job extends \Ibw\JobeetBundle\Entity\Job implements \Doctrine\ORM\Proxy\Pr
         return parent::asArray($host);
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    public function updateLuceneIndex()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'updateLuceneIndex', array());
+
+        return parent::updateLuceneIndex();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function deleteLuceneIndex()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'deleteLuceneIndex', array());
+
+        return parent::deleteLuceneIndex();
+    }
+
 }
