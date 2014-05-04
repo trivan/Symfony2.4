@@ -312,112 +312,6 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'ibw_jobeet_hello')), array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\DefaultController::indexAction',));
         }
 
-        if (0 === strpos($pathinfo, '/job')) {
-            // ibw_job
-            if (rtrim($pathinfo, '/') === '/job') {
-                if (substr($pathinfo, -1) !== '/') {
-                    return $this->redirect($pathinfo.'/', 'ibw_job');
-                }
-
-                return array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\JobController::indexAction',  '_route' => 'ibw_job',);
-            }
-
-            // ibw_job_show
-            if (preg_match('#^/job/(?P<company>[^/]++)/(?P<location>[^/]++)/(?P<id>\\d+)/(?P<position>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'ibw_job_show')), array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\JobController::showAction',));
-            }
-
-            // ibw_job_preview
-            if (preg_match('#^/job/(?P<company>[^/]++)/(?P<location>[^/]++)/(?P<token>\\w+)/(?P<position>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'ibw_job_preview')), array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\JobController::previewAction',));
-            }
-
-            // ibw_job_new
-            if ($pathinfo === '/job/new') {
-                return array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\JobController::newAction',  '_route' => 'ibw_job_new',);
-            }
-
-            // ibw_job_create
-            if ($pathinfo === '/job/create') {
-                if ($this->context->getMethod() != 'POST') {
-                    $allow[] = 'POST';
-                    goto not_ibw_job_create;
-                }
-
-                return array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\JobController::createAction',  '_route' => 'ibw_job_create',);
-            }
-            not_ibw_job_create:
-
-            // ibw_job_publish
-            if (preg_match('#^/job/(?P<token>[^/]++)/publish$#s', $pathinfo, $matches)) {
-                if ($this->context->getMethod() != 'POST') {
-                    $allow[] = 'POST';
-                    goto not_ibw_job_publish;
-                }
-
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'ibw_job_publish')), array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\JobController::publishAction',));
-            }
-            not_ibw_job_publish:
-
-            // ibw_job_edit
-            if (preg_match('#^/job/(?P<token>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'ibw_job_edit')), array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\JobController::editAction',));
-            }
-
-            // ibw_job_update
-            if (preg_match('#^/job/(?P<token>[^/]++)/update$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
-                    $allow = array_merge($allow, array('POST', 'PUT'));
-                    goto not_ibw_job_update;
-                }
-
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'ibw_job_update')), array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\JobController::updateAction',));
-            }
-            not_ibw_job_update:
-
-            // ibw_job_delete
-            if (preg_match('#^/job/(?P<token>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
-                    $allow = array_merge($allow, array('POST', 'DELETE'));
-                    goto not_ibw_job_delete;
-                }
-
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'ibw_job_delete')), array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\JobController::deleteAction',));
-            }
-            not_ibw_job_delete:
-
-            // ibw_job_extend
-            if (preg_match('#^/job/(?P<token>[^/]++)/extend$#s', $pathinfo, $matches)) {
-                if ($this->context->getMethod() != 'POST') {
-                    $allow[] = 'POST';
-                    goto not_ibw_job_extend;
-                }
-
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'ibw_job_extend')), array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\JobController::extendAction',));
-            }
-            not_ibw_job_extend:
-
-            // ibw_job_search
-            if ($pathinfo === '/job/search') {
-                return array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\JobController::searchAction',  '_route' => 'ibw_job_search',);
-            }
-
-        }
-
-        // ibw_jobeet_homepage
-        if (rtrim($pathinfo, '/') === '') {
-            if (substr($pathinfo, -1) !== '/') {
-                return $this->redirect($pathinfo.'/', 'ibw_jobeet_homepage');
-            }
-
-            return array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\JobController::indexAction',  '_route' => 'ibw_jobeet_homepage',);
-        }
-
-        // IbwJobeetBundle_category
-        if (0 === strpos($pathinfo, '/category') && preg_match('#^/category/(?P<slug>[^/]++)(?:/(?P<page>[^/]++))?$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'IbwJobeetBundle_category')), array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\CategoryController::showAction',  'page' => 1,));
-        }
-
         if (0 === strpos($pathinfo, '/log')) {
             if (0 === strpos($pathinfo, '/login')) {
                 // login
@@ -439,36 +333,147 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        if (0 === strpos($pathinfo, '/a')) {
-            // IbwJobeetBundle_api
-            if (0 === strpos($pathinfo, '/api') && preg_match('#^/api/(?P<token>[^/]++)/jobs\\.(?P<_format>xml|json|yaml)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'IbwJobeetBundle_api')), array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\ApiController::listAction',));
+        // IbwJobeetBundle_category
+        if (preg_match('#^/(?P<_locale>en|fr)/category/(?P<slug>[^/]++)(?:/(?P<page>[^/]++))?$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'IbwJobeetBundle_category')), array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\CategoryController::showAction',  'page' => 1,));
+        }
+
+        // ibw_job
+        if (preg_match('#^/(?P<_locale>en|fr)/job/?$#s', $pathinfo, $matches)) {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'ibw_job');
             }
 
-            if (0 === strpos($pathinfo, '/affiliate')) {
-                // ibw_affiliate_new
-                if ($pathinfo === '/affiliate/new') {
-                    return array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\AffiliateController::newAction',  '_route' => 'ibw_affiliate_new',);
-                }
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'ibw_job')), array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\JobController::indexAction',));
+        }
 
-                // ibw_affiliate_create
-                if ($pathinfo === '/affiliate/create') {
-                    if ($this->context->getMethod() != 'POST') {
-                        $allow[] = 'POST';
-                        goto not_ibw_affiliate_create;
-                    }
+        // ibw_job_show
+        if (preg_match('#^/(?P<_locale>en|fr)/job/(?P<company>[^/]++)/(?P<location>[^/]++)/(?P<id>\\d+)/(?P<position>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'ibw_job_show')), array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\JobController::showAction',));
+        }
 
-                    return array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\AffiliateController::createAction',  '_route' => 'ibw_affiliate_create',);
-                }
-                not_ibw_affiliate_create:
+        // ibw_job_preview
+        if (preg_match('#^/(?P<_locale>en|fr)/job/(?P<company>[^/]++)/(?P<location>[^/]++)/(?P<token>\\w+)/(?P<position>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'ibw_job_preview')), array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\JobController::previewAction',));
+        }
 
-                // ibw_affiliate_wait
-                if ($pathinfo === '/affiliate/wait') {
-                    return array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\AffiliateController::waitAction',  '_route' => 'ibw_affiliate_wait',);
-                }
+        // ibw_job_new
+        if (preg_match('#^/(?P<_locale>en|fr)/job/new$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'ibw_job_new')), array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\JobController::newAction',));
+        }
 
+        // ibw_job_create
+        if (preg_match('#^/(?P<_locale>en|fr)/job/create$#s', $pathinfo, $matches)) {
+            if ($this->context->getMethod() != 'POST') {
+                $allow[] = 'POST';
+                goto not_ibw_job_create;
             }
 
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'ibw_job_create')), array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\JobController::createAction',));
+        }
+        not_ibw_job_create:
+
+        // ibw_job_publish
+        if (preg_match('#^/(?P<_locale>en|fr)/job/(?P<token>[^/]++)/publish$#s', $pathinfo, $matches)) {
+            if ($this->context->getMethod() != 'POST') {
+                $allow[] = 'POST';
+                goto not_ibw_job_publish;
+            }
+
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'ibw_job_publish')), array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\JobController::publishAction',));
+        }
+        not_ibw_job_publish:
+
+        // ibw_job_edit
+        if (preg_match('#^/(?P<_locale>en|fr)/job/(?P<token>[^/]++)/edit$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'ibw_job_edit')), array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\JobController::editAction',));
+        }
+
+        // ibw_job_update
+        if (preg_match('#^/(?P<_locale>en|fr)/job/(?P<token>[^/]++)/update$#s', $pathinfo, $matches)) {
+            if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
+                $allow = array_merge($allow, array('POST', 'PUT'));
+                goto not_ibw_job_update;
+            }
+
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'ibw_job_update')), array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\JobController::updateAction',));
+        }
+        not_ibw_job_update:
+
+        // ibw_job_delete
+        if (preg_match('#^/(?P<_locale>en|fr)/job/(?P<token>[^/]++)/delete$#s', $pathinfo, $matches)) {
+            if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
+                $allow = array_merge($allow, array('POST', 'DELETE'));
+                goto not_ibw_job_delete;
+            }
+
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'ibw_job_delete')), array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\JobController::deleteAction',));
+        }
+        not_ibw_job_delete:
+
+        // ibw_job_extend
+        if (preg_match('#^/(?P<_locale>en|fr)/job/(?P<token>[^/]++)/extend$#s', $pathinfo, $matches)) {
+            if ($this->context->getMethod() != 'POST') {
+                $allow[] = 'POST';
+                goto not_ibw_job_extend;
+            }
+
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'ibw_job_extend')), array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\JobController::extendAction',));
+        }
+        not_ibw_job_extend:
+
+        // ibw_job_search
+        if (preg_match('#^/(?P<_locale>en|fr)/job/search$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'ibw_job_search')), array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\JobController::searchAction',));
+        }
+
+        // ibw_jobeet_homepage
+        if (preg_match('#^/(?P<_locale>en|fr)/?$#s', $pathinfo, $matches)) {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'ibw_jobeet_homepage');
+            }
+
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'ibw_jobeet_homepage')), array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\JobController::indexAction',));
+        }
+
+        // IbwJobeetBundle_api
+        if (0 === strpos($pathinfo, '/api') && preg_match('#^/api/(?P<token>[^/]++)/jobs\\.(?P<_format>xml|json|yaml)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'IbwJobeetBundle_api')), array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\ApiController::listAction',));
+        }
+
+        // ibw_affiliate_new
+        if (preg_match('#^/(?P<_locale>en|fr)/affiliate/new$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'ibw_affiliate_new')), array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\AffiliateController::newAction',));
+        }
+
+        // ibw_affiliate_create
+        if (preg_match('#^/(?P<_locale>en|fr)/affiliate/create$#s', $pathinfo, $matches)) {
+            if ($this->context->getMethod() != 'POST') {
+                $allow[] = 'POST';
+                goto not_ibw_affiliate_create;
+            }
+
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'ibw_affiliate_create')), array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\AffiliateController::createAction',));
+        }
+        not_ibw_affiliate_create:
+
+        // ibw_affiliate_wait
+        if (preg_match('#^/(?P<_locale>en|fr)/affiliate/wait$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'ibw_affiliate_wait')), array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\AffiliateController::waitAction',));
+        }
+
+        // IbwJobeetBundle_nonlocalized
+        if (rtrim($pathinfo, '/') === '') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'IbwJobeetBundle_nonlocalized');
+            }
+
+            return array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\JobController::indexAction',  '_route' => 'IbwJobeetBundle_nonlocalized',);
+        }
+
+        // IbwJobeetBundle_changeLanguage
+        if ($pathinfo === '/change_language') {
+            return array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\DefaultController::changeLanguageAction',  '_route' => 'IbwJobeetBundle_changeLanguage',);
         }
 
         // _welcome

@@ -31,11 +31,7 @@ class __TwigTemplate_4b597713e7d463c17eeae5986628467a4d8292a7f7cec6651db296130c6
     {
         // line 4
         echo "    ";
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["entity"]) ? $context["entity"] : null), "company"), "html", null, true);
-        echo " is looking for a ";
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["entity"]) ? $context["entity"] : null), "position"), "html", null, true);
-        echo "
-";
+        echo $this->env->getExtension('translator')->getTranslator()->trans("%company% is looking for a %position%", array("%company%" => $this->getAttribute((isset($context["entity"]) ? $context["entity"] : null), "company"), "%position%" => $this->getAttribute((isset($context["entity"]) ? $context["entity"] : null), "position")), "messages");
     }
 
     // line 7
@@ -56,82 +52,81 @@ class __TwigTemplate_4b597713e7d463c17eeae5986628467a4d8292a7f7cec6651db296130c6
     public function block_content($context, array $blocks = array())
     {
         // line 13
-        echo "
-    ";
-        // line 14
+        echo "    ";
         if ($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : null), "request"), "get", array(0 => "token"), "method")) {
-            // line 15
+            // line 14
             echo "        ";
             $this->env->loadTemplate("IbwJobeetBundle:Job:admin.html.twig")->display(array_merge($context, array("job" => (isset($context["entity"]) ? $context["entity"] : null))));
-            // line 16
+            // line 15
             echo "    ";
         }
-        // line 17
-        echo "
-    <div id=\"job\">
+        // line 16
+        echo "    <div id=\"job\">
         <h1>";
-        // line 19
+        // line 17
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["entity"]) ? $context["entity"] : null), "company"), "html", null, true);
         echo "</h1>
         <h2>";
-        // line 20
+        // line 18
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["entity"]) ? $context["entity"] : null), "location"), "html", null, true);
         echo "</h2>
         <h3>
             ";
-        // line 22
+        // line 20
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["entity"]) ? $context["entity"] : null), "position"), "html", null, true);
         echo "
             <small> - ";
-        // line 23
+        // line 21
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["entity"]) ? $context["entity"] : null), "type"), "html", null, true);
         echo "</small>
         </h3>
  
         ";
-        // line 26
+        // line 24
         if ($this->getAttribute((isset($context["entity"]) ? $context["entity"] : null), "logo")) {
-            // line 27
+            // line 25
             echo "            <div class=\"logo\">
                 <a href=\"";
-            // line 28
+            // line 26
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["entity"]) ? $context["entity"] : null), "url"), "html", null, true);
             echo "\">
                     <img src=\"/uploads/jobs/";
-            // line 29
+            // line 27
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["entity"]) ? $context["entity"] : null), "logo"), "html", null, true);
             echo "\"
                         alt=\"";
-            // line 30
+            // line 28
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["entity"]) ? $context["entity"] : null), "company"), "html", null, true);
             echo " logo\" />
                 </a>
             </div>
         ";
         }
-        // line 34
+        // line 32
         echo " 
         <div class=\"description\">
             ";
-        // line 36
+        // line 34
         echo nl2br(twig_escape_filter($this->env, $this->getAttribute((isset($context["entity"]) ? $context["entity"] : null), "description"), "html", null, true));
         echo "
         </div>
  
-        <h4>How to apply?</h4>
+        <h4>";
+        // line 37
+        echo $this->env->getExtension('translator')->getTranslator()->trans("How to apply?", array(), "messages");
+        echo "</h4>
  
         <p class=\"how_to_apply\">";
-        // line 41
+        // line 39
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["entity"]) ? $context["entity"] : null), "howtoapply"), "html", null, true);
         echo "</p>
  
         <div class=\"meta\">
-            <small>posted on ";
-        // line 44
-        echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute((isset($context["entity"]) ? $context["entity"] : null), "createdat"), "m/d/Y"), "html", null, true);
+            <small>";
+        // line 42
+        echo $this->env->getExtension('translator')->getTranslator()->trans("posted on %date%", array("%date%" => twig_date_format_filter($this->env, $this->getAttribute((isset($context["entity"]) ? $context["entity"] : null), "createdat"), "m/d/Y")), "messages");
         echo "</small>
         </div>
-
     </div>
 ";
     }
@@ -148,6 +143,6 @@ class __TwigTemplate_4b597713e7d463c17eeae5986628467a4d8292a7f7cec6651db296130c6
 
     public function getDebugInfo()
     {
-        return array (  76 => 13,  97 => 32,  70 => 17,  53 => 7,  65 => 16,  52 => 13,  270 => 110,  266 => 109,  261 => 107,  253 => 102,  244 => 99,  236 => 94,  216 => 86,  211 => 84,  200 => 79,  195 => 77,  188 => 73,  184 => 72,  172 => 66,  100 => 35,  96 => 33,  84 => 26,  58 => 19,  167 => 57,  165 => 56,  160 => 54,  145 => 47,  139 => 44,  126 => 41,  118 => 39,  113 => 34,  74 => 19,  249 => 101,  232 => 93,  225 => 12,  222 => 11,  198 => 97,  190 => 92,  185 => 90,  175 => 59,  155 => 75,  152 => 58,  114 => 61,  110 => 34,  23 => 3,  148 => 57,  124 => 45,  120 => 44,  104 => 37,  83 => 22,  77 => 22,  37 => 5,  480 => 162,  474 => 161,  469 => 158,  461 => 155,  457 => 153,  453 => 151,  444 => 149,  440 => 148,  437 => 147,  435 => 146,  430 => 144,  427 => 143,  423 => 142,  413 => 134,  409 => 132,  407 => 131,  402 => 130,  398 => 129,  393 => 126,  387 => 122,  384 => 121,  381 => 120,  379 => 119,  374 => 116,  368 => 112,  365 => 111,  362 => 110,  360 => 109,  355 => 106,  341 => 105,  337 => 103,  322 => 101,  314 => 99,  312 => 98,  309 => 97,  305 => 95,  298 => 91,  294 => 90,  285 => 89,  283 => 88,  278 => 115,  268 => 85,  264 => 84,  258 => 81,  252 => 80,  247 => 78,  241 => 77,  229 => 73,  220 => 87,  214 => 5,  177 => 84,  169 => 60,  140 => 52,  132 => 42,  128 => 49,  111 => 37,  107 => 36,  61 => 15,  273 => 96,  269 => 94,  254 => 92,  246 => 82,  243 => 88,  240 => 17,  238 => 85,  235 => 16,  230 => 82,  227 => 91,  224 => 71,  221 => 77,  219 => 76,  217 => 6,  208 => 68,  204 => 80,  179 => 70,  159 => 76,  143 => 71,  135 => 43,  131 => 44,  119 => 37,  108 => 38,  102 => 29,  71 => 19,  67 => 16,  63 => 17,  59 => 13,  47 => 10,  38 => 9,  94 => 28,  89 => 28,  85 => 27,  79 => 26,  75 => 20,  68 => 19,  56 => 12,  50 => 9,  29 => 3,  87 => 23,  72 => 16,  55 => 14,  21 => 2,  26 => 5,  98 => 28,  93 => 26,  88 => 6,  78 => 20,  46 => 9,  27 => 3,  40 => 8,  44 => 4,  35 => 6,  31 => 5,  43 => 8,  41 => 15,  28 => 5,  201 => 92,  196 => 90,  183 => 82,  171 => 80,  166 => 71,  163 => 63,  158 => 67,  156 => 59,  151 => 63,  142 => 59,  138 => 54,  136 => 51,  123 => 47,  121 => 46,  117 => 36,  115 => 42,  105 => 35,  101 => 32,  91 => 27,  69 => 17,  66 => 18,  62 => 14,  49 => 10,  24 => 4,  32 => 4,  25 => 5,  22 => 2,  19 => 1,  209 => 82,  203 => 99,  199 => 67,  193 => 73,  189 => 71,  187 => 84,  182 => 66,  176 => 64,  173 => 65,  168 => 65,  164 => 59,  162 => 77,  154 => 58,  149 => 48,  147 => 56,  144 => 49,  141 => 48,  133 => 55,  130 => 65,  125 => 41,  122 => 43,  116 => 41,  112 => 37,  109 => 39,  106 => 30,  103 => 36,  99 => 35,  95 => 27,  92 => 26,  86 => 42,  82 => 25,  80 => 23,  73 => 24,  64 => 15,  60 => 20,  57 => 13,  54 => 12,  51 => 11,  48 => 9,  45 => 8,  42 => 7,  39 => 3,  36 => 8,  33 => 4,  30 => 3,);
+        return array (  58 => 14,  76 => 20,  53 => 7,  65 => 16,  271 => 109,  259 => 103,  255 => 102,  234 => 93,  213 => 84,  206 => 80,  202 => 79,  186 => 72,  181 => 70,  174 => 66,  170 => 65,  165 => 63,  129 => 41,  120 => 37,  160 => 55,  157 => 54,  134 => 41,  127 => 42,  100 => 32,  84 => 26,  70 => 20,  52 => 12,  113 => 36,  104 => 31,  74 => 20,  34 => 5,  289 => 75,  286 => 74,  280 => 16,  275 => 110,  272 => 14,  266 => 107,  261 => 104,  251 => 101,  248 => 5,  233 => 97,  222 => 87,  218 => 86,  211 => 91,  207 => 90,  197 => 77,  190 => 73,  185 => 82,  175 => 74,  155 => 51,  152 => 66,  118 => 55,  97 => 29,  90 => 28,  81 => 38,  23 => 3,  150 => 57,  126 => 45,  110 => 34,  77 => 22,  37 => 5,  480 => 162,  474 => 161,  469 => 158,  461 => 155,  457 => 153,  453 => 151,  444 => 149,  440 => 148,  437 => 147,  435 => 146,  430 => 144,  427 => 143,  423 => 142,  413 => 134,  409 => 132,  407 => 131,  402 => 130,  398 => 129,  393 => 126,  387 => 122,  384 => 121,  381 => 120,  379 => 119,  374 => 116,  368 => 112,  365 => 111,  362 => 110,  360 => 109,  355 => 106,  341 => 105,  337 => 103,  322 => 101,  314 => 99,  312 => 98,  309 => 97,  305 => 95,  298 => 91,  294 => 90,  285 => 89,  283 => 115,  278 => 86,  268 => 85,  264 => 84,  258 => 10,  252 => 80,  247 => 78,  241 => 77,  229 => 91,  220 => 70,  214 => 69,  177 => 76,  169 => 60,  140 => 44,  132 => 51,  128 => 49,  111 => 53,  107 => 34,  61 => 15,  273 => 96,  269 => 94,  254 => 7,  246 => 99,  243 => 88,  240 => 86,  238 => 94,  235 => 74,  230 => 82,  227 => 96,  224 => 71,  221 => 77,  219 => 76,  217 => 75,  208 => 68,  204 => 72,  179 => 69,  159 => 68,  143 => 63,  135 => 53,  131 => 58,  119 => 37,  108 => 32,  102 => 32,  71 => 18,  67 => 17,  63 => 17,  59 => 10,  47 => 10,  38 => 7,  94 => 28,  89 => 29,  85 => 24,  79 => 18,  75 => 20,  68 => 19,  56 => 12,  50 => 24,  29 => 3,  87 => 27,  72 => 21,  55 => 13,  21 => 2,  26 => 5,  98 => 28,  93 => 31,  88 => 25,  78 => 21,  46 => 9,  27 => 3,  40 => 8,  44 => 4,  35 => 6,  31 => 5,  43 => 8,  41 => 8,  28 => 5,  201 => 89,  196 => 90,  183 => 82,  171 => 72,  166 => 71,  163 => 62,  158 => 59,  156 => 66,  151 => 49,  142 => 52,  138 => 51,  136 => 61,  123 => 38,  121 => 39,  117 => 42,  115 => 54,  105 => 40,  101 => 35,  91 => 26,  69 => 17,  66 => 18,  62 => 30,  49 => 10,  24 => 4,  32 => 4,  25 => 5,  22 => 2,  19 => 1,  209 => 82,  203 => 78,  199 => 67,  193 => 73,  189 => 71,  187 => 84,  182 => 66,  176 => 64,  173 => 65,  168 => 57,  164 => 59,  162 => 69,  154 => 58,  149 => 56,  147 => 58,  144 => 45,  141 => 48,  133 => 49,  130 => 40,  125 => 38,  122 => 44,  116 => 37,  112 => 33,  109 => 34,  106 => 32,  103 => 32,  99 => 28,  95 => 27,  92 => 26,  86 => 24,  82 => 25,  80 => 21,  73 => 22,  64 => 16,  60 => 13,  57 => 11,  54 => 25,  51 => 11,  48 => 13,  45 => 8,  42 => 10,  39 => 3,  36 => 8,  33 => 4,  30 => 3,);
     }
 }

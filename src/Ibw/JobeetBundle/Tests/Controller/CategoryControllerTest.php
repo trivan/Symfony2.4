@@ -66,44 +66,44 @@ class CategoryControllerTest extends WebTestCase
         $executor->execute($loader->getFixtures());
     }
 
-    public function testShow()
+   public function testShow()
     {
         $kernel = static::createKernel();
         $kernel->boot();
-        // Get the custom parameters from app/config.yml
+ 
+        // get the custom parameters from app/config.yml
         $max_jobs_on_category = $kernel->getContainer()->getParameter('max_jobs_on_category');
         $max_jobs_on_homepage = $kernel->getContainer()->getParameter('max_jobs_on_homepage');
  
         $client = static::createClient();
+ 
         $categories = $this->em->getRepository('IbwJobeetBundle:Category')->getWithJobs();
  
-        // Categories on homepage are clickable
+        // categories on homepage are clickable
         foreach($categories as $category) {
-            $crawler = $client->request('GET', '/');
+            $crawler = $client->request('GET', '/en/');
  
             $link = $crawler->selectLink($category->getName())->link();
             $crawler = $client->click($link);
  
-            $this->assertEquals('Ibw\JobeetBundle\Controller\CategoryController::showAction', 
-                    $client->getRequest()->attributes->get('_controller'));
+            $this->assertEquals('Ibw\JobeetBundle\Controller\CategoryController::showAction', $client->getRequest()->attributes->get('_controller'));
             $this->assertEquals($category->getSlug(), $client->getRequest()->attributes->get('slug'));
  
             $jobs_no = $this->em->getRepository('IbwJobeetBundle:Job')->countActiveJobs($category->getId());
  
-            // Categories with more than $max_jobs_on_homepage jobs also have a "more" link                
+            // categories with more than $max_jobs_on_homepage jobs also have a "more" link                
             if($jobs_no > $max_jobs_on_homepage) {
-                $crawler = $client->request('GET', '/');
+                $crawler = $client->request('GET', '/en/');
                 $link = $crawler->filter(".category_" . $category->getSlug() . " .more_jobs a")->link();
                 $crawler = $client->click($link);
  
-                $this->assertEquals('Ibw\JobeetBundle\Controller\CategoryController::showAction', 
-                        $client->getRequest()->attributes->get('_controller'));
+                $this->assertEquals('Ibw\JobeetBundle\Controller\CategoryController::showAction', $client->getRequest()->attributes->get('_controller'));
                 $this->assertEquals($category->getSlug(), $client->getRequest()->attributes->get('slug'));
             }
  
             $pages = ceil($jobs_no/$max_jobs_on_category);
  
-            // Only $max_jobs_on_category jobs are listed
+            // only $max_jobs_on_category jobs are listed
             $this->assertTrue($crawler->filter('.jobs tr')->count() <= $max_jobs_on_category);
             $this->assertRegExp("/" . $jobs_no . " jobs/", $crawler->filter('.pagination_desc')->text());
  
@@ -114,15 +114,13 @@ class CategoryControllerTest extends WebTestCase
                     $link = $crawler->selectLink($i)->link();
                     $crawler = $client->click($link);
  
-                    $this->assertEquals('Ibw\JobeetBundle\Controller\CategoryController::showAction', 
-                            $client->getRequest()->attributes->get('_controller'));
+                    $this->assertEquals('Ibw\JobeetBundle\Controller\CategoryController::showAction', $client->getRequest()->attributes->get('_controller'));
                     $this->assertEquals($i, $client->getRequest()->attributes->get('page'));
                     $this->assertTrue($crawler->filter('.jobs tr')->count() <= $max_jobs_on_category);
-                    if($jobs_no >1) {
+                    if($jobs_no > 1) {
                         $this->assertRegExp("/" . $jobs_no . " jobs/", $crawler->filter('.pagination_desc')->text());
                     }
-                    $this->assertRegExp("/page " . $i . "\/" . $pages . "/", 
-                            $crawler->filter('.pagination_desc')->text());
+                    $this->assertRegExp("/page " . $i . "\/" . $pages . "/", $crawler->filter('.pagination_desc')->text());
                 }
             }    
         }
