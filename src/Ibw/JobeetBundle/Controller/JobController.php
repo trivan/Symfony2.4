@@ -4,6 +4,7 @@ namespace Ibw\JobeetBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 
 use Ibw\JobeetBundle\Entity\Job;
 use Ibw\JobeetBundle\Form\JobType;
@@ -392,15 +393,27 @@ class JobController extends Controller
 
     public function searchAction(Request $request)
     {
-    	$em = $this->getDoctrine()->getManager();
-    	$query = $this->getRequest()->get('query');
-    
-    	if(!$query) {
-    		return $this->redirect($this->generateUrl('ibw_job'));
-    	}
-    
-    	$jobs = $em->getRepository('IbwJobeetBundle:Job')->getForLuceneQuery($query);
-    
-    	return $this->render('IbwJobeetBundle:Job:search.html.twig', array('jobs' => $jobs));
+        $em = $this->getDoctrine()->getManager();
+        $query = $this->getRequest()->get('query');
+ 
+        if(!$query) {
+            if(!$request->isXmlHttpRequest()) {
+                return $this->redirect($this->generateUrl('ibw_job'));
+            } else {
+                return new Response('No results.');
+            }
+        }
+ 
+        $jobs = $em->getRepository('IbwJobeetBundle:Job')->getForLuceneQuery($query);
+ 
+        if($request->isXmlHttpRequest()) {
+            if('*' == $query || !$jobs || $query == '') {
+                return new Response('No results.');
+            }
+ 
+            return $this->render('IbwJobeetBundle:Job:list.html.twig', array('jobs' => $jobs));
+        }
+ 
+        return $this->render('IbwJobeetBundle:Job:search.html.twig', array('jobs' => $jobs));
     }
 }

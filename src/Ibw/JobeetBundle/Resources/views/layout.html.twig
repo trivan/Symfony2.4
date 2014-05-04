@@ -7,11 +7,16 @@
             {% endblock %}
         </title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
         {% block stylesheets %}
             <link rel="stylesheet" href="{{ asset('bundles/ibwjobeet/css/main.css') }}" type="text/css" media="all" />
         {% endblock %}
+
         {% block javascripts %}
+            <script type="text/javascript" src="{{ asset('bundles/ibwjobeet/js/jquery-2.1.1.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('bundles/ibwjobeet/js/search.js') }}"></script>
         {% endblock %}
+
         <link rel="shortcut icon" href="{{ asset('bundles/ibwjobeet/images/favicon.ico') }}" />
         <link rel="alternate" type="application/atom+xml" title="Latest Jobs" href="{{ url('ibw_job', {'_format': 'atom'}) }}" />
     </head>
@@ -31,17 +36,19 @@
                             </div>
                         </div>
  
-                        <div class="search">
-                            <h2>Ask for a job</h2>
-                            <form action="{{ path('ibw_job_search') }}" method="get">
-                                <input type="text" name="query" value="{{ app.request.get('query') }}" 
-                                id="search_keywords" />
-                                <input type="submit" value="search" />
-                                <div class="help">
-                                    Enter some keywords (city, country, position, ...)
-                                </div>
-                            </form>
-                        </div>
+                            <div class="search">
+                                <h2>Ask for a job</h2>
+                                <form action="{{ path('ibw_job_search') }}" method="get">
+                                    <input type="text" name="query" value="{{ app.request.get('query') }}" 
+                                    id="search_keywords" />
+                                    <input type="submit" value="search" />
+                                    <img id="loader" src="{{ asset('bundles/ibwjobeet/images/loader.gif') }}" 
+                                    style="vertical-align: middle; display: none" />
+                                    <div class="help">
+                                        Enter some keywords (city, country, position, ...)
+                                    </div>
+                                </form>
+                            </div>
 
                     </div>
                 </div>
